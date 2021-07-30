@@ -17,26 +17,27 @@ class ViewController: UIViewController {
     @IBOutlet private weak var label2: UILabel!
     @IBOutlet private weak var answerLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
     @IBAction func answerButton(_ sender: UIButton) {
         
-        var num1 = Int(textField1.text!) ?? 0
-        var num2 = Int(textField2.text!) ?? 0
-        
-        //スイッチがオンの場合正負を逆転
+        let num1 = Int(textField1.text!) ?? 0
+        let num2 = Int(textField2.text!) ?? 0
+
+        let signedNum1: Int
         if switch1.isOn {
-            num1 = num1 * -1
+            signedNum1 = -num1
+        } else {
+            signedNum1 = num1
         }
+
+        let signedNum2: Int
         if switch2.isOn {
-            num2 = num2 * -1
+            signedNum2 = -num2
+        } else {
+            signedNum2 = num2
         }
         
-        label1.text = String(num1)
-        label2.text = String(num2)
-        answerLabel.text = String(num1 + num2)
+        label1.text = String(signedNum1)
+        label2.text = String(signedNum2)
+        answerLabel.text = String(signedNum1 + signedNum2)
     }
 }
